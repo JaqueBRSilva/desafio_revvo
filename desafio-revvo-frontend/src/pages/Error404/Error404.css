@@ -1,0 +1,12 @@
+.error__content {
+    display: flex;
+    flex-direction: column;
+    min-height: 50%;
+    height: 80svh;
+    place-content: center;
+    gap: 2rem;
+}
+
+h1, h2 {
+    text-align: center;
+}
