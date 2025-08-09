@@ -15,6 +15,20 @@
             echo json_encode($courses);
         }
     
+        public function show($id) {
+            $course = new Course($this->db);
+            $course->id = $id;
+            $stmt = $course->getCourseById();
+            $data = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+            if ($data) {
+                echo json_encode($data);
+            } else {
+                http_response_code(404);
+                echo json_encode(["mensagem" => "Curso não encontrado."]);
+            }
+        }
+
         public function store() {
             $data = json_decode(file_get_contents("php://input"));
             if (!isset($data->title) || !isset($data->description)) {
